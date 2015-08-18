@@ -6,14 +6,23 @@ def add(*args):
 def multiply(*args):
 	return reduce(lambda x, y: int(x)*int(y), args)
 
-functions = {'+' : add, '*' : multiply}
+def create_list(*args):
+	return list(args)
+
+def append(*args):
+	return reduce(lambda x, y: int(x).append(int(y)), list(args))
+
+functions = {'+' : add, 
+             '*' : multiply,
+             'list' : create_list,
+             'append' : append}
 
 #### CORE PARSING MODULE ####
 
 def is_single(input):
 	# if input.program == computer_science: return True
 	return input.find(')')+1 == len(input)
-	# Kappa
+	# K-k-kappa
 
 def parse_single(input):
 	input = input.strip('()')
@@ -33,4 +42,4 @@ def parse(input):
 
 while True:
 	x = raw_input()
-	print parse(x)
+	print parse(x) # this parser sucks because i'm storing everything internally as a string
